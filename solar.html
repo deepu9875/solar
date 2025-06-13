@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SunSaver – Solar Awareness</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffbea;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #ffd54f;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+    }
+    section {
+      padding: 20px;
+    }
+    h2 {
+      color: #ff8f00;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .result {
+      background: #fff8e1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    .info-card {
+      background: #fff3e0;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>☀️ SunSaver</h1>
+  <p>Save Money, Save Earth – Go Solar Today!</p>
+</header>
+
+<section>
+  <h2>🔍 Why Choose Solar?</h2>
+  <div class="info-card">
+    🌞 Visakhapatnam gets >300 sunny days a year – perfect for solar panels!
+  </div>
+  <div class="info-card">
+    💸 Save up to ₹600–₹1000 per month on electricity.
+  </div>
+  <div class="info-card">
+    🌍 Reduce your carbon footprint and support SDG 13.
+  </div>
+</section>
+
+<section>
+  <h2>🧮 Solar Savings Calculator</h2>
+  <label>Your Avg Monthly Electricity Bill (₹):</label>
+  <input type="number" id="billInput" placeholder="Enter amount like 1000" />
+  <button onclick="calculateSavings()">Calculate Savings</button>
+  <div id="result" class="result"></div>
+</section>
+
+<section>
+  <h2>🏡 Which Solar Panel Suits You?</h2>
+  <ul>
+    <li><strong>Rooftop:</strong> 2kW-5kW panels, ideal for homes</li>
+    <li><strong>Balcony:</strong> Compact 300W panels with inverters</li>
+    <li><strong>Shops:</strong> 1kW small kits available</li>
+  </ul>
+</section>
+
+<section>
+  <h2>📋 Interested in Solar?</h2>
+  <p>Fill the below form and we'll guide you!</p>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeHz-zT9ba2u27pjwuaRF_1YIXchzbwjWYN3lsuQp-8nhkhkQ/viewform?usp=header">Loading…</iframe>
+</section>
+
+<script>
+  function calculateSavings() {
+    let bill = parseFloat(document.getElementById("billInput").value);
+    let result = document.getElementById("result");
+    if (isNaN(bill) || bill <= 0) {
+      result.innerHTML = "❗ Please enter a valid amount.";
+      return;
+    }
+
+    let monthlySavings = bill * 0.65;
+    let yearlySavings = monthlySavings * 12;
+    let roiYears = Math.ceil(40000 / yearlySavings); // Assuming ₹40k setup
+
+    result.innerHTML = `
+      💡 You could save approx <strong>₹${monthlySavings.toFixed(0)}/month</strong>!<br>
+      💰 Annual savings: <strong>₹${yearlySavings.toFixed(0)}</strong><br>
+      📈 ROI (Return on Investment): ~<strong>${roiYears} years</strong>
+    `;
+  }
+</script>
+
+</body>
+</html>
